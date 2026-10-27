@@ -154,3 +154,69 @@ plt.xlim([200, 400])
 plt.ylabel("Transmitted")
 plt.legend()
 plt.show()
+
+bandwidth = 0.38
+
+freqw = bandwidth * (freq_range[1] - freq_range[0])
+
+# make a copy of the original simulation, but change the frequency width of the source
+bw_source = source.copy(
+    update={"source_time": source.source_time.copy(update={"fwidth": freqw})}
+)
+sim_bw = sim.copy(update={"sources": [bw_source]})
+
+# make the normalization simulation for this
+sim_bw0 = sim_bw.copy(update={"structures": []})
+
+# Check probe and source, looks now like the source spectrum fully covers the green square
+f, (ax1, ax2) = plt.subplots(1, 2, tight_layout=True, figsize=(8, 4))
+ax1 = sim_bw.sources[0].source_time.plot(
+    times=np.linspace(0, sim_bw.run_time, 1001), ax=ax1
+)
+ax1.set_xlim(0, sim_bw.run_time)
+ax1.legend(("source amplitude",))
+ax2 = sim_bw.sources[0].source_time.plot_spectrum(
+    times=np.linspace(0, sim_bw.run_time, 1001), val="abs", ax=ax2
+)
+fill_max = 15e-16
+ymax = 20e-16
+ax2.fill_between(
+    freq_range, [-0e-16, -0e-16], [fill_max, fill_max], alpha=0.4, color="g"
+)
+ax2.legend(("source spectrum", "measurement"))
+ax2.set_ylim(-1e-16, ymax)
+plt.show()
+
+batch = {
+    "lecture02_slab_broadband_normalization": sim_bw0,
+    "lecture02_slab_broadband_transmission": sim_bw,
+}
+
+batch_data = web.run_async(simulations=batch, path_dir="data")
+
+sim_bw_data0 = batch_data["lecture02_slab_broadband_normalization"]
+sim_bw_data = batch_data["lecture02_slab_broadband_transmission"]
+
+# Retrieve the power flux through the monitor plane.
+transmission0 = sim_bw_data0["flux"].flux
+transmission = sim_bw_data["flux"].flux
+transmission_normalized = transmission / transmission0
+
+f, (ax1, ax2) = plt.subplots(2, 1, figsize=(4, 7), tight_layout=True)
+transmission0.plot(ax=ax1, label="no slab")
+transmission.plot(ax=ax1, label="with slab")
+transmission_normalized.plot(ax=ax2)
+ax1.legend()
+ax1.set_title("raw transmission")
+ax2.set_title("normalized transmission")
+plt.show()
+
+
+plt.figure()
+plt.plot(monitor_freqs / 1e12, transmission_analytical, "k", label="analytical")
+plt.plot(monitor_freqs / 1e12, transmission_normalized, "b--", label="FDTD")
+plt.xlabel("frequency (THz)")
+plt.xlim([200, 400])
+plt.ylabel("Transmitted")
+plt.legend()
+plt.show()
