@@ -1,3 +1,4 @@
 Bibliography
 [1] A. H. Nizamani and W. K. Hensinger, “Optimum Electrode Configurations for Fast Ion Separation in Microfabricated Surface Ion Traps,” Applied Physics B, vol. 106, no. 2, pp. 327–338, Nov. 2011, doi: 10.1007/s00340-011-4803-x.
 [2] I. Gerasin, N. Zhadnov, K. Konstantin, K. Khabarova, N. Kolachevsky, and I. Semerikov, “Optimized Surface Ion Trap Design for Tight Confinement and Separation of Ion Chains,” Jul. 19, 2024. doi: 10.3390/quantum6030029.
+[3]T. Abbasov, S. Zibrov, and I. Sherstov, “Surface-Electrode Ion Trap Development,” JETP Letters, vol. 118, no. 3, pp. 215–219, Jul. 2023, doi: 10.1134/s0021364023602063.
