@@ -19,6 +19,12 @@ results=(ROOT/'thickness_screen_results.json').as_uri()
 geometry=(ROOT/'trap_optimization_results.json').as_uri()
 materials=(ROOT/'rf_material_comparison.json').as_uri()
 
+s=Slide('Surface Ion Trap Optimization','HardHaq2026',note='Title slide for the concise presentation. The investigation covers the documented notebook development, constrained depth optimization, symmetry, fabrication thicknesses and RF material comparison.')
+s.text('Geometry, stability and fabrication',.95,2.65,14,1.2,36,CYAN,True)
+s.text('A numerical investigation of a single calcium-ion surface trap',.95,4.25,14,1.15,26)
+s.text('Design development  •  Simulation findings  •  Material comparison',.95,6.15,14,.95,22,GOLD)
+source(s,('Project investigation: working notebook and annotated decision record',(ROOT/'Ion trap - decisions and justification.ipynb').as_uri()))
+
 s=Slide('Surface ion trap: findings and recommendation','HardHaq2026',note='Concise synthesis of notebook development, geometry screening, six finite-gap thickness cases and material calculations. The recommended center requires relaxing the starter fixed-center restriction.')
 s.text('151.75 meV predicted RF-only depth',.95,2.35,14,1.1,36,CYAN,True)
 s.text('Symmetric 200 µm RF rails • 5 µm gaps\n5 µm gold • 500 µm fused silica',.95,4.05,14,1.7,27)
@@ -75,9 +81,9 @@ source(s,('[5] Schmied, finite-electrode and dielectric corrections, New J. Phys
 
 if issues:raise RuntimeError(f'Text overflow: {issues}')
 for i,s in enumerate(slides,1):s.im.save(PREVIEWS/f'short_slide_{i:02d}.png')
-prs.save(ROOT/'ION_TRAP_FINDINGS.pptx')
-slides[0].im.save(ROOT/'ION_TRAP_FINDINGS.pdf','PDF',save_all=True,append_images=[s.im for s in slides[1:]],resolution=100)
-notesout=['# Concise presentation notes\n\nNine slides; source citations appear on every slide.\n']
+prs.save(ROOT/'ION_TRAP_FINDINGS_WITH_TITLE.pptx')
+slides[0].im.save(ROOT/'ION_TRAP_FINDINGS_WITH_TITLE.pdf','PDF',save_all=True,append_images=[s.im for s in slides[1:]],resolution=100)
+notesout=[f'# Concise presentation notes\n\n{len(slides)} slides, including a dedicated title slide; source citations appear on every slide.\n']
 for i,(title,note,_) in enumerate(notes,1):
     notesout.append(f'## Slide {i}: {title}\n\n'+slides[i-1].s.notes_slide.notes_text_frame.text+'\n')
 (ROOT/'ION_TRAP_PRESENTATION_NOTES.md').write_text('\n'.join(notesout),encoding='utf-8')
