@@ -1,0 +1,20 @@
+{
+  "metal_thickness_um": 5,
+  "substrate_thickness_um": 500,
+  "rf_width_um": 200.0,
+  "gap_um": 5.0,
+  "center_width_um": 26.71361,
+  "voltage_V": 100.0,
+  "q_target": 0.395,
+  "ion_height_um": 58.0,
+  "retuned_frequency_Hz": 50141371.901853874,
+  "retuned_secular_Hz": 6944555.594822829,
+  "retuned_depth_meV": 151.75195410538322,
+  "checks": {
+    "height": true,
+    "secular": true,
+    "drive": true,
+    "depth": true
+  },
+  "note": "Frequency retuned using electrostatic scaling; solve at final frequency and refine mesh to confirm."
+}

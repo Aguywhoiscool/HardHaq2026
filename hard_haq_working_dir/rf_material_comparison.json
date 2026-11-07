@@ -1,0 +1,44 @@
+{
+  "frequency_Hz": 50141371.901853874,
+  "temperature_K": 293,
+  "skin_depth_um": {
+    "Au": 10.575741665521434,
+    "Cu": 9.206997043652185
+  },
+  "cases": {
+    "5um_Au": {
+      "uniform_current_sheet_resistance_ohm_per_square": 0.004428,
+      "uniform_current_resistance_ohm_per_mm_at_200um_width": 0.02214,
+      "electrode_resistance_ratio_to_Au": 1.0
+    },
+    "4.8um_Cu_0.2um_Au": {
+      "uniform_current_sheet_resistance_ohm_per_square": 0.00338881672565403,
+      "uniform_current_resistance_ohm_per_mm_at_200um_width": 0.01694408362827015,
+      "electrode_resistance_ratio_to_Au": 0.7653154303645056
+    },
+    "4.5um_Cu_0.5um_Au": {
+      "uniform_current_sheet_resistance_ohm_per_square": 0.0034392630994260313,
+      "uniform_current_resistance_ohm_per_mm_at_200um_width": 0.017196315497130157,
+      "electrode_resistance_ratio_to_Au": 0.7767080170338825
+    },
+    "4.8um_Cu_0.2um_Au_Cu_resistivity_x1.5": {
+      "uniform_current_sheet_resistance_ohm_per_square": 0.005006592636515552,
+      "uniform_current_resistance_ohm_per_mm_at_200um_width": 0.02503296318257776,
+      "electrode_resistance_ratio_to_Au": 1.130666810414533
+    }
+  },
+  "total_loss_sensitivity": [
+    {
+      "fraction_of_original_loss_in_replaced_electrodes": 0.1,
+      "predicted_fractional_total_loss_reduction": 0.023468456963549447
+    },
+    {
+      "fraction_of_original_loss_in_replaced_electrodes": 0.5,
+      "predicted_fractional_total_loss_reduction": 0.11734228481774722
+    },
+    {
+      "fraction_of_original_loss_in_replaced_electrodes": 1.0,
+      "predicted_fractional_total_loss_reduction": 0.23468456963549444
+    }
+  ]
+}
